@@ -1,0 +1,89 @@
+- name: Create admin group
+  group: name={{ admins_group }} state=present
+
+- name: Create noc group
+  group: name={{ operators_group }} state=present
+
+
+- set_fact: full_admin_list="{{ admins_list }}"
+  tags: ['debug']
+
+- set_fact: full_operator_list="{{ operators_list }}"
+  tags: ['debug']
+  
+
+- name: Setup all  Admin users
+  user:
+    name: "{{ item.username }}"
+    state: "{{ item.state | default('present') }}"
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    group: "{{ admins_group }}"
+    remove: yes
+  when: item.username is defined
+  with_items:
+    - "{{ full_admin_list }}"
+
+
+- name: Setup all  Operator users
+  user:
+    name: "{{ item.username }}"
+    state: "{{ item.state | default('present') }}"
+    shell: "{{ item.shell | default('/bin/bash') }}"
+    group: "{{ operators_group }}"
+    remove: yes
+  when: item.username is defined
+  with_items:
+    - "{{ full_operator_list }}"
+
+
+
+- name: Add SSH-keys to admin users
+  authorized_key:
+    user: "{{ item.0.username }}"
+    key: "{{ item.1 }}"
+  with_subelements:
+    - "{{ full_admin_list }}"
+    - keys.active
+    - flags:
+      skip_missing: True
+  when: item.0.state != "absent"
+
+
+- name: Add SSH-keys to operator users
+  authorized_key:
+    user: "{{ item.0.username }}"
+    key: "{{ item.1 }}"
+  with_subelements:
+    - "{{ full_operator_list }}"
+    - keys.active
+    - flags:
+      skip_missing: True
+  when: item.0.state != "absent"
+
+
+- name: Remove old SSH-keys from admin users
+  authorized_key:
+    user: "{{ item.0.username }}"
+    key: "{{ item.1 }}"
+    state: absent
+  with_subelements:
+    - "{{ full_admin_list }}"
+    - keys.disabled
+    - flags:
+      skip_missing: True
+  when: item.0.state != "absent"
+  tags: ['debug']
+
+
+- name: Remove old SSH-keys from operator users
+  authorized_key:
+    user: "{{ item.0.username }}"
+    key: "{{ item.1 }}"
+    state: absent
+  with_subelements:
+    - "{{ full_operator_list }}"
+    - keys.disabled
+    - flags:
+      skip_missing: True
+  when: item.0.state != "absent"
+  tags: ['debug']

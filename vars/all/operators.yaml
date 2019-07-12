@@ -1,0 +1,17 @@
+operators_list:
+  - name: "Your operator name"
+    username: "your operator username"
+    keys:
+      active:
+        - "your operator keys"
+    shell: "/bin/bash"
+    state: present
+  - name: "operator number 2 name"
+    username: "operator number 2 username"
+    keys:
+      active:
+        - "operator number2 keys"
+#      disabled:
+#        - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDRWvdjK+Mea+NNHwsqkMdog2VXHKWqpXaei5qpPRcFaZyGMvHvF/g5k/oxdUEyRJCaGRtwFADbA63uNAA0CsSy+KmWY/chmpI0HAnvV+bNGD7OCzxTOs5V5Qcoq2JS9pAewGO7QY16J6P5BZazJL9oUeWgW43zr8tWjGhWHWOyXy0NtK1PA7HYVeWKLQq1WAtxiLpzHt87AwhpW23gtNf9uSHexfOWn2YCxSb4JyQLIkeyZRwIT1VROSXLLwCecVLMGuqvbLhsJpIPRBFoq8xJpqqI/QN6c6A/1RKL0uYa0RWUEyRT+xTTe1YkW1VZyUHn/lfO3kxs310ZtL9hz84gxrOu+KaJkyVQZGspiEJ1C/8gR6n2OzQiO6zxKVcQeUkm4hb7RFWQvjda7+03wYqqHHfZk1ofKLVdacUEj6aF/r27cBC2hv822P/ruHlhK/XIOfUog+M7QrohlHDonDBlOFl7x1kQBtAEkv8tKl3vLdoxt8bZu8lzzi+6/w1ZlWjS7Y4y5AF+y3yVoYWY7qgFo9jlV4h8fxs36BYTXqbUnkjlvj8y9EdenLACvCJifiXeoKFvCFFeb3R1frKS/LZM4wl8jt+3nSvOXzACXs9p/JmH/RyR+tJ1ik00sME8OlTaRwbHvqLz1NzJylswtrKZk18M181nrCPoWpnK43CxDQ== cardno:000607465442 Amin khoshnood"
+    shell: "/bin/bash"
+    state: present

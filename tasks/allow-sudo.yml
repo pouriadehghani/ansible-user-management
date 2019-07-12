@@ -1,0 +1,12 @@
+- name: admin-suduers
+  become: true # do this as root
+  copy:
+      src: ../vars/all/admin-sudoers
+      dest: /etc/sudoers.d/
+
+- name: Disable su from /etc/pam.d/su
+  become: true
+  replace:
+    path: /etc/pam.d/su
+    regexp: 'auth       sufficient pam_rootok.so'
+    replace:  '#auth       sufficient pam_rootok.so' 

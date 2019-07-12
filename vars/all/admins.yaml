@@ -1,0 +1,19 @@
+admins_list:
+  - name: "Your administrator name"
+    username: "Your administrator username"
+    keys:
+      active:
+        - "Your administrator keys"
+     # disabled:
+     #   - "Old Key for Replacing with new key should be here"
+    shell: "/bin/bash"
+    state: present
+  - name: "administrator number 2 "
+    username: "administrator number 2 username"
+    keys:
+      active:
+        - "administrator number 2 keys"
+     # disabled:
+     #   - "Old Key for Replacing with new key should be here"
+    shell: "/bin/bash"
+    state: present

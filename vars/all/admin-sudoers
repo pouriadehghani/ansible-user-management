@@ -1,0 +1,3 @@
+Cmnd_Alias DEVELOPERS_COMMANDS = /usr/bin/docker *, /usr/local/bin/openstack *, /bin/ping *, /usr/bin/traceroute *, /usr/bin/mtr *, /usr/local/bin/nova *
+%infra_admin ALL=(ALL) NOPASSWD:ALL,!/bin/bash
+%noc ALL=NOPASSWD:DEVELOPERS_COMMANDS
